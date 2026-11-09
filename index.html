@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Children's Outcomes by Parental Income Percentile</title>
+    <title>White Hat/Black Hat visualization</title>
 
     <!-- D3 -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -14,9 +14,16 @@
 
 <body>
 
-    <h1>Children's Outcomes by Parental Income Percentile</h1>
+    <h1>White Hat/Black Hat Visualization</h1>
 
+    <h2>White Hat: </h2>
+    <p>Hint: try clicking on the </p>
     <div class='tableauPlaceholder' id='viz1794251548062' style='position: relative'><noscript><a href='#'><img alt='White Hat: Complaints by Complaint Type, Officer Ethnicity, and Board Disposition ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;G4&#47;G4RDNJSJG&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;G4RDNJSJG' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;G4&#47;G4RDNJSJG&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1794251548062');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    <br>
+    <h2>Black Hat: </h2>
+    <div class='tableauPlaceholder' id='viz1794253754336' style='position: relative'><noscript><a href='#'><img alt='Number and Type of Complaints Against Police for Each Race ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;bl&#47;blackhatlog&#47;Sheet3&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='blackhatlog&#47;Sheet3' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;bl&#47;blackhatlog&#47;Sheet3&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1794253754336');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+    <br>
 
     <div>
         <h1>
@@ -53,24 +60,6 @@
 
         <p>
             Our final design incorporates dynamic querying, details on demand, and zooming. We start with a dropdown menu that allows the user to select an outcome of interest. In addition to the dropdown, we have checkboxes that correspond to the racial categories defined in the codebook: [white, Black, Hispanic, Asian, Native American (natam), pooled].
-        </p>
-        <p>
-            We decided to have the pooled graph up by default because it provides a useful aggregate view of outcomes across racial categories. The user can select/deselect any number of additional desired categories to view the corresponding graphs.
-        </p>
-        <p>
-            Once an outcome and race(s) are selected, the dataset will be re-queried in order to obtain values for that outcome for every combination of percentile category, race, and gender. The graphs will be updated accordingly to display the new outcome name and outcome range and data.
-        </p>
-        <p>
-            For each graph, the outcome is on the x-axis, with 0 at the midpoint and the maximum value (for that outcome’s range) on both ends of the x-axis; the left side is for male data, while the right side is female. This side-by-side placement of these bars makes it easier for users to compare outcome values by gender within the same percentile. 
-        </p>
-        <p>
-            The percentile is on the y-axis. Because the dataset includes rows for all percentiles, we opted to use ticks on the y-axis in increments of 10 for a clean look. However, all percentiles are displayed in order to see the full distribution shape.
-        </p>
-        <p>
-            A tool we added was details on demand (tooltip). This allows the user to hover over any bar to see the exact numeric value for the outcome.
-        </p>
-        <p>
-            Another tool we added was zooming, which allows the user to zoom in on a range of interest (for percentile) when exploring outcome data. This also makes using tooltip easier, as the bars are wider.
         </p>
 
         <p>
