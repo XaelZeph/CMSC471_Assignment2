@@ -17,12 +17,11 @@
     <h1>White Hat/Black Hat Visualization</h1>
 
     <h2>White Hat: </h2>
-    <p>Hint: try clicking on the </p>
     <div class='tableauPlaceholder' id='viz1794251548062' style='position: relative'><noscript><a href='#'><img alt='White Hat: Complaints by Complaint Type, Officer Ethnicity, and Board Disposition ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;G4&#47;G4RDNJSJG&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;G4RDNJSJG' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;G4&#47;G4RDNJSJG&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1794251548062');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
     <br>
+
     <h2>Black Hat: </h2>
     <div class='tableauPlaceholder' id='viz1794253754336' style='position: relative'><noscript><a href='#'><img alt='Number and Type of Complaints Against Police for Each Race ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;bl&#47;blackhatlog&#47;Sheet3&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='blackhatlog&#47;Sheet3' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;bl&#47;blackhatlog&#47;Sheet3&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1794253754336');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-
     <br>
 
     <div>
@@ -32,93 +31,82 @@
 
         <p>
             <strong> 
-            Introduction
+            White Hat 
             </strong>
+            (dataset, design choices, how viz is clear/accurate)
         </p>
 
         <p>
-            Our dataset is the “All Outcomes at the National Level by Race, Gender and Parental Income Percentile” dataset that was used by Raj Chetty and his team for their “Changing Opportunity” paper. This dataset measures outcomes from a national perspective and organizes data in rows corresponding to parental income percentile rather than geographic region (like county or census tract). It contains predicted outcomes for children based on a combination of their race, their gender, and their parents’ income percentile. 
+            We used ProPublica’s dataset: <a href="https://www.propublica.org/datastore/dataset/civilian-complaints-against-new-york-city-police-officers">Civilian Complaints Against New York City Police Officers</a>. We decided on this dataset because we weren’t particularly interested in environmental data and felt that the datasets with gender equality data and gentrification data were both too similar in theme to our Project 1 dataset, which looked at socioeconomic indicators.
         </p>
         
 
         <p>
-            We decided to select a subset of the outcomes, and we used two main methods to eliminate what we saw as non-critical ones. The first is that we left out complicated outcomes (like KIR and KFR) that were not intuitive to us and thus unlikely for users to easily understand. The second is that when we encountered “sets” of related variables (for example: married and marr_age), we opted to select only the outcome that was of most interest. Our final subset contains a variety of outcomes that allow users to explore themes like child labor, education level, marital/partnered status, geographic mobility, and economic mobility.
+            For our white hat visualization, we created a bar chart that is both stacked and grouped. The chart explores civilians’ complaints by both complaint type and officer ethnicity. Complaint type is used for the main division (grouping of bars, x-position of group), and each group contains one bar for each ethnicity (x-position of ethnicity bar within group). We positioned the groups left-to-right in ascending order of complaint type severity. 
+        </p>
+
+        <p>
+            Each bar is subdivided and colored based on our custom calculated field, Board Disposition Simple, which combines the dataset’s original 10+ disposition types into 3 broad, easy-to-understand types: “Exonerated,” “Substantiated,” and “Unsubstantiated.” The ordering of the bar groups that I discussed above allows users to see a clear trend when it comes to substantiation rates.
+        </p>
+
+        <p>
+            This visualization represents the data accurately because it shows complaint data as a percentage of the category’s total number of complaints (where a category is a unique combination of Complaint Type and Officer Ethnicity). This allows users to compare data across groups based on proportions instead of raw counts. We chose this because raw counts can be misleading when one category (for example, white officers) is significantly overrepresented in the dataset.
+        </p>
+
+        <p>
+            We implemented two main interactions. The first is sorting: users can use the “Sort by Board Disposition” dropdown menu to select one disposition type. Upon selection, all bars will automatically update so that the subsections for that disposition type are at the bottom. This makes side-by-side comparison easier because of the same visual starting point of 0%. As a shortcut, users can simply click on one such subsection on any bar, and all bar-subsections  with the same board disposition will be moved to the bottom.
+        </p>
+
+        <p>
+            The second is customized tooltips. Users can already hover over a subsection of a bar to view the values for the default fields (Board Disposition Simple, Complaint Type, and Officer Ethnicity) as well as the precise percentage value for that combination as a proportion of the bar. We extended this to also include the average complainant age. Each tooltip also includes a graph that shows the number of complaints within that category (ethnicity, Board Disposition, and Complaint Type) received each year from 1985-2020. We opted to use dots instead of a line (traditional line graph) because we wanted to ensure clarity about years with no complaints without the visual eyesore of multiple breaks in a line.
         </p>
 
         <p>
             <strong>
-                Design Decision and Implemented Interactions
+                Black Hat 
             </strong>
+            (manipulative techniques)
         </p>
 
         <p>
-            <strong style="color:gray;font-style: italic;">
-                Final Design
-            </strong>
-        </p>
-        
-
-        <p>
-            Our final design incorporates dynamic querying, details on demand, and zooming. We start with a dropdown menu that allows the user to select an outcome of interest. In addition to the dropdown, we have checkboxes that correspond to the racial categories defined in the codebook: [white, Black, Hispanic, Asian, Native American (natam), pooled].
+            We used three other misleading techniques. For <strong>axis manipulation</strong>, we used a log scale with a fixed number of ticks. The log scale makes the numbers of complaints against officers of each race seem evenly distributed, even though most of the complaints are against white officers while Native American officers receive very few complaints. Since there are only four marks that are multiples of 10, it is hard to even tell that a log scale was used.
         </p>
 
         <p>
-            <strong style="color:gray;font-style: italic;">
-                Previous Iterations
-            </strong>
-        </p>
-
-        <p>
-            When discussing potential design options, we wanted to ensure that we could display data with a sufficient level of detail without detracting from users’ ability to make comparisons between demographic groups. Initially, we had wanted to use a dataset that measured outcomes at the county or census tract level and create a visualization with a map that could be recolored dynamically. For this hypothetical setup, users would hover over a specific county or tract to view the graphs for that region. This would have satisfied the “details on demand” requirement in a different way.
-        </p>
-        <p>
-            However, there were two main issues with this approach. The main issue is there is no readily available map for tract nor county. The second is that the county- and tract-level datasets involve an additional variable (region). Although this might be useful when it comes to the level of detail provided, we realized that it would make it more difficult for users to draw larger patterns from their observations. By choosing to focus on combinations of only percentile, race, and gender (at the national level), we reduced complexity while still keeping enough attributes for in-depth analysis.
+            Additionally, the set-up skews the proportions for all categories so that it seems like there are far more complaints about categories at the bottom (like physical contact and poor use of authority) than bars at the top (barbaric remarks and maltreatment). For <strong>titles/labels</strong>, we renamed the complaint types to conceal severity (“Force” became “Physical Contact”) and to exaggerate severity (“Offensive Language” became “Barbaric or Abusive Remarks”). For <strong>marks/encodings</strong>, we chose a diverging color scale but assigned the colors in a “reversed” way so that the “severe” complaint types appear less serious. We assigned red to language-related offenses and light blue to force-related offenses.
         </p>
 
         <p>
             <strong>
-                References to Data Sources
+                References to Data Resources
             </strong>
         </p>
         
 
         <p>
-            <a href="https://opportunityinsights.org/wp-content/uploads/2019/07/Codebook-for-Table-7.pdf">Codebook for Table 7: All Outcomes at the National Level by Race, Gender and Parental Income Percentile</a>
+            <a href="https://youtu.be/D9Ex0tzvHNc">How to Add a Graph to a Tooltip Viz in Tooltip</a>
             </p>
         <p>
-            <a href="https://observablehq.com/@d3/zoomable-bar-chart ">zoom example by mike</a>
-           </p>
-        <p> <a href="https://d3-graph-gallery.com/graph/interactivity_button.html">examples of how to make interactive buttons and checkboxes</a>
-           </p>
-        <p> <a href="https://observablehq.com/@dakoop/reading-in-data-learn-js-data ">how to parse csv</a>
-           </p>
-        <p> <a href="https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array-in-javascript  ">arrays in javascript</a>
-           </p>
-        <p> <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/  ">how to flexbox</a>
-           </p>
-        <p> <a href="https://jonathansoma.com/lede/storytelling/d3/user-input-checkboxes-dropdowns/  ">how to checkboxes</a>
+            <a href="https://youtu.be/UcHBd5VMipY">How to Reorder a Chart with a Parameter Action</a>
+        </p>
+        <p> 
+            <a href="https://help.tableau.com/current/api/embedding_api/en-us/docs/embedding_api_basic.html ">How to embed Tableau chart</a>
         </p>
 
         <p>
             <strong>
-                Development Process
+                Overview of Development Process
             </strong>
         </p>
 
         <p>
-            At our first meeting, after our initial discussion of preferences regarding datasets, we set up a clear meeting cadence to keep ourselves on track. We decided on weekly two-hour sessions on Wednesdays after class and virtual sessions on Saturdays on an as-needed basis if challenges arose. We also set up a shared folder in Google Drive to organize documents for project planning (ideas & sketches), this write-up, and a demo video script. 
+            Based on our experience from Project 1, we decided to meet in-person whenever possible because we felt that in-person interaction makes it easier for us to work efficiently and provide real-time feedback for each other’s work. During the planning phase, all three of us came up with multiple ideas and discussed the pros and cons of each. For example, we knew we wanted to create something that would show how raw counts alone and percentages alone do not show the full story, but we disagreed about which one was “worse” and how we’d translate that into a visualization.
         </p>
         <p>
-            We didn’t decide on formal roles within the group. The three of us worked equally in the ideation process for settling on the appropriate dataset and overall goals. Then, when evaluating tasks for each stage, we divided responsibilities based on our personal strengths and preferences. 
+            We spent about 7 hours developing our application. Because we used Tableau, we were able to spend significantly more time brainstorming, trying out different ideas, and debating best strategies instead of getting stuck “in the weeds” of manual coding and debugging. Xael created several exploratory visualizations to help us better understand key variables in the dataset and determine which ones would make for a compelling story. This work covered different types of charts (bar, line, area, etc.) and user interactions so that we could look at several potential combinations. 
         </p>
         <p>
-            I (Ankita) took on most of the tasks related to project management and writing. For example, I led discussions about major project decisions, such as (1) which outcomes should be included in our analysis and why and (2) which internal deadlines we would set for each phase (dataset planning, quality check, demo). I also wrote this write-up and the demo video requirements.
-        </p>
-        <p>
-            Stephanie and Xael split up the bulk of the coding tasks. Stephanie coded several exploratory “proof-of-concept” visualizations to help us decide between potential designs by weighing pros and cons (compactness, intuitiveness, etc.). Xael worked on the code for the “Outcome” dropdown menu and the “Race” checkbox selector as well as the logic for dynamic querying and the graphs. Xael and I collaborated to determine how to cleanly compartmentalize different functions in our code since we had to add and remove graphs. We also worked on the dynamic re-sizing and spacing of the graphs as well as the tooltips. Lastly, Xael implemented the zooming interactive feature.
-        </p>
-        <p>
-            We estimate that we spent 10-12 hours coding. The most difficult aspect was restructuring the entire structure to hold multiple graphs, combined with figuring out the logic to create new graphs (checkboxes) and dynamically resize. 
+            Stephanie worked on the logic and the chart for the black hat visualization, and Ankita did the same for the white hat visualization. Xael and Stephanie both found the resources needed for advanced tooltips, calculated fields, and parameter actions (creating user interactions in Tableau). Ankita wrote all of the write-up sections. Lastly, Xael set up the repository and configured all headings for organization.
         </p>
 
         <p>
@@ -128,10 +116,8 @@
         </p>
 
         <p>
-            During the proof-of-concept phase, we used ChatGPT to understand how to implement two components of our graphs: the vertical spacing between bars (to avoid overlap/touching) and the extension of bars to the left and right of a central y-axis.
-        </p>
-        <p>
-            During the main development phase, when we attempted to combine our checkbox functionality with the graph resizing, we ran into issues where graphs were overlapping and axes were not being removed consistently between de-selections. We used Gemini to debug our code. We ended up implementing not just dynamic padding (based on the number of graphs) but also dynamic tick re-numbering, font re-sizing, and y label offset. Additionally, we realized that we had to remove the graph from our internal “graphs” array prior to removing the actual graph from the SVG.
+            
+Toward the end, we used ChatGPT to explore possibilities for additional advanced tooltip functionality, but we didn’t end up implementing any of them because they caused errors.
 
         </p>
     </div>
