@@ -45,7 +45,7 @@
         </p>
 
         <p>
-            Each bar is subdivided and colored based on our custom calculated field, Board Disposition Simple, which combines the dataset’s original 10+ disposition types into 3 broad, easy-to-understand types: “Exonerated,” “Substantiated,” and “Unsubstantiated.” The ordering of the bar groups that I discussed above allows users to see a clear trend when it comes to substantiation rates.
+            To transform one aspect of the data, we simplified Board Disposition, which originally had 10+ disposition types. We created a custom calculated field, Board Disposition Simple, which combines the dataset’s original 10+ disposition types into 3 broad, easy-to-understand types: “Exonerated,” “Substantiated,” and “Unsubstantiated.” Each bar is subdivided and colored based on these simplified types. The ordering of the bar groups that I discussed above allows users to see a clear trend when it comes to substantiation rates.
         </p>
 
         <p>
@@ -53,11 +53,7 @@
         </p>
 
         <p>
-            We implemented two main interactions. The first is sorting: users can use the “Sort by Board Disposition” dropdown menu to select one disposition type. Upon selection, all bars will automatically update so that the subsections for that disposition type are at the bottom. This makes side-by-side comparison easier because of the same visual starting point of 0%. As a shortcut, users can simply click on one such subsection on any bar, and all bar-subsections  with the same board disposition will be moved to the bottom.
-        </p>
-
-        <p>
-            The second is customized tooltips. Users can already hover over a subsection of a bar to view the values for the default fields (Board Disposition Simple, Complaint Type, and Officer Ethnicity) as well as the precise percentage value for that combination as a proportion of the bar. We extended this to also include the average complainant age. Each tooltip also includes a graph that shows the number of complaints within that category (ethnicity, Board Disposition, and Complaint Type) received each year from 1985-2020. We opted to use dots instead of a line (traditional line graph) because we wanted to ensure clarity about years with no complaints without the visual eyesore of multiple breaks in a line.
+            One data transformation through interaction is sorting: users can use the “Sort by Board Disposition” dropdown menu to select one disposition type. Upon selection, all bars will automatically update so that the subsections for that disposition type are at the bottom. This makes side-by-side comparison easier because of the same visual starting point of 0%. 
         </p>
 
         <p>
@@ -106,6 +102,15 @@
         <p>
             Stephanie worked on the logic and the chart for the black hat visualization, and Ankita did the same for the white hat visualization. Xael and Stephanie both found the resources needed for advanced tooltips, calculated fields, and parameter actions (creating user interactions in Tableau). Ankita wrote all of the write-up sections. Lastly, Xael set up the repository and configured all headings for organization.
         </p>
+        <p>
+            Here are some developmental plots that we explored:
+            <img src="/images/Screenshot 2026-11-11 at 4.06.16 PM.png" alt="A description of the image">
+            <img src="/images/Screenshot 2026-11-05 004934.png" alt="A description of the image">
+            <img src="/images/Screenshot 2026-11-05 012813.png" alt="A description of the image">
+            <img src="/images/Screenshot 2026-11-05 013624.png" alt="A description of the image">
+            <img src="/images/Screenshot 2026-11-11 152437.png" alt="A description of the image">
+            <img src="/images/Screenshot 2026-11-11 152628.png" alt="A description of the image">
+        </p>
 
         <p>
             <strong>
@@ -117,6 +122,23 @@
             
 Toward the end, we used ChatGPT to explore possibilities for additional advanced tooltip functionality, but we didn’t end up implementing any of them because they caused errors.
 
+        </p>
+
+        <p>
+            <strong>Extra Credit</strong>
+
+        </p>
+
+        <p>
+            For extra credit, we implemented two advanced interactions: worksheet actions for automatic sorting and tooltip filtered scatterplot.
+        </p>
+
+        <p>
+            One of our major transformations was sorting using a dropdown interaction. As a shortcut, we also added an advanced interaction using worksheet actions: users can simply click on one such subsection on any bar, and all bar-subsections with the same board disposition will be moved to the bottom. Tableau’s “worksheet action” uses select/hover/menu to change the value of a parameter; in our case, we chose to “select”/click on a bar in order to set the parameter value for the dropdown.
+        </p>
+
+        <p>
+            The second is customized tooltips. Users can already hover over a subsection of a bar to view the values for the default fields (Board Disposition Simple, Complaint Type, and Officer Ethnicity) as well as the precise percentage value for that combination as a proportion of the bar. We extended this to also include the average complainant age. Each tooltip also includes a graph that shows the number of complaints within that category (ethnicity, Board Disposition, and Complaint Type) received each year from 1985-2020. We opted to use dots instead of a line (traditional line graph) because we wanted to ensure clarity about years with no complaints without the visual eyesore of multiple breaks in a line.
         </p>
     </div>
 
